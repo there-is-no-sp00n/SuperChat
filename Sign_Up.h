@@ -10,6 +10,8 @@ Class Sign_Up
     public:
             void create_user(User);
             
+            void set_user();
+            
     private:
             string nick;
             int year;
