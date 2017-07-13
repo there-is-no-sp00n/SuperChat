@@ -1,6 +1,12 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
 class Message
 {
     public:
