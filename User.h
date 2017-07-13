@@ -9,24 +9,24 @@ using namespace std;
 class User
 {
     public:
-          User()
-          
-          
+          User();
+
+
           void set_user();
-    
+
           void create_msg();
-    
+
           void send_message(Message);
 
 
     private:
-    
+
           string nick;
           string UUID;
           string captain;
           bool online;
-          vector <user> ban_list;
-          
+          vector <User> ban_list;
+
 };
 
 #endif
