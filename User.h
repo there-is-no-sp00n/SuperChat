@@ -24,6 +24,6 @@ class User
           bool online;
           vector <user> ban_list;
           
-}
+};
 
 #endif
