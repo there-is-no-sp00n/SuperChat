@@ -13,6 +13,7 @@ Class Sign_Up
             void set_user();
             
     private:
+            string allowed_captains[4] = {"Kirk", "Picard", "Pike", "Other"};
             string nick;
             int year;
             string captain;
