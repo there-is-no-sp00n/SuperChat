@@ -13,10 +13,11 @@ class Message
 
           Message();
 
-          void set_msg();
+          void set_msg(string, int, int);
 
           string get_msg(Message);
           int get_UUID(Message);
+          string get_user(Message);
 
           bool get_prv(Message);
 

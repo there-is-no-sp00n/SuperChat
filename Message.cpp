@@ -5,7 +5,7 @@ Message::Message()
 
 }
 
-void Message::set_msg()
+void Message::set_msg(string nick, int id, int prv)
 {
     cout << "Enter Message: ";
     getline(cin, msg);
@@ -19,5 +19,31 @@ void Message::set_msg()
         getline(cin, msg);
     }
 
+    UUID = id;
 
+    user = nick;
+
+    //have to add the private message bool
+
+
+
+
+
+
+
+}
+
+string Message::get_msg(Message)
+{
+    return msg;
+}
+
+int Message::get_UUID(Message)
+{
+    return UUID;
+}
+
+string Message::get_user(Message)
+{
+    return user;
 }
