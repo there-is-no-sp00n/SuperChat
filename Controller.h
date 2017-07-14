@@ -2,6 +2,7 @@
 #define CONTROLLER_H
 
 #include "Sign_Up.h"
+#include "Message.h"
 
 
 class Controller

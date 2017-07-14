@@ -35,7 +35,9 @@ void Sign_Up::set_user()
     cin >> year;
     cout << endl;
 
-    while (year >= 2040 && year <= 2017)
+
+    //have to make it work for the edge cases
+    while (year >= 2040 || year <= 2017)
     {
         cout << "ERROR! Year of graduation must be between 2017 and 2040" << endl;
 
@@ -55,6 +57,11 @@ void Sign_Up::set_user()
 
     cin >> choice;
 
+    if(choice >= 1 || choice <= 4)
+    {
+        captain = allowed_captains[choice - 1];
+    }
+
     while(choice < 1 || choice > 4)
     {
         cout << "ERROR! Choice must be between these captains" << endl;
@@ -67,6 +74,8 @@ void Sign_Up::set_user()
         cin >> choice;
 
         captain = allowed_captains[choice - 1];
+
+        //cout << "the capitan is" << captain << endl;
 
     }
 

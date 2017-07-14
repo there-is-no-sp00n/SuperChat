@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <cstdlib>
+#include <string.h>
+
+
 #include "Message.h"
 
 using namespace std;
