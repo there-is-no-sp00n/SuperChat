@@ -10,7 +10,7 @@ class Sign_Up
     public:
             Sign_Up();
 
-            void create_user(User);
+            void create_user();
 
             void set_user();
 

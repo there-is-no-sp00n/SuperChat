@@ -13,8 +13,16 @@ void Sign_Up::set_user()
     cout << endl;
 
 
+    while(nick.length() > 8)
+    {
+        cout << "ERROR! The nick must be at most 8 characters." << endl;
+        cout << "What is your nick? ";
+        getline(cin, nick);
+        cout << endl;
+    }
 
-    while (nick.find_first_of("1234567890!@#$%^&*") != string::npos)
+
+    while (nick.find_first_of("1234567890!@#$%^&*.?;:,+") != string::npos)
     {
         cout << "ERROR! Only Upper & Lower case letters allowed and '-' or '_'" << endl;
         cout << "What is your nick? ";
