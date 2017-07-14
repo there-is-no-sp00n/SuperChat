@@ -2,6 +2,7 @@
 #define USER_H
 
 #include <vector>
+#include <cstdlib>
 #include "Message.h"
 
 using namespace std;
@@ -18,13 +19,25 @@ class User
 
           void send_message(Message);
 
-          void make_offline();
+          //void make_offline();
+
+          void put_in_ban(User);
+
+          string get_nick(User);
+
+          int get_UUID(User);
+
+          int get_grad_year(User);
+
+          string get_captain(User);
+
+          vector <User> get_ban(User);
 
 
     private:
 
           string nick;
-          string UUID;
+          int UUID;
           int year;
           string captain;
           //bool online;

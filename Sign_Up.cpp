@@ -21,8 +21,8 @@ void Sign_Up::set_user()
         cout << endl;
     }
 
-
-    while (nick.find_first_of("1234567890!@#$%^&*.?;:,+") != string::npos)
+    //have to refine this statement to not take double quotes ""
+    while (nick.find_first_of("1234567890!@#$%^&*.?;:,+'/}{]" "[><~` ") != string::npos)
     {
         cout << "ERROR! Only Upper & Lower case letters allowed and '-' or '_'" << endl;
         cout << "What is your nick? ";
@@ -70,6 +70,11 @@ void Sign_Up::set_user()
 
     }
 
+}
 
+void Sign_Up::create_user()
+{
+    User new_user;
 
+    new_user.set_user(nick, year, captain);
 }

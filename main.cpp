@@ -1,13 +1,15 @@
 #include <iostream>
-#include "Sign_Up.h"
+#include "Controller.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    //cout << "Hello world!" << endl;
 
-    Sign_Up test;
-    test.set_user();
+    Controller boss;
+
+    boss.run_the_show();
+
     return 0;
 }
