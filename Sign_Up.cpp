@@ -57,7 +57,7 @@ void Sign_Up::set_user()
 
     cin >> choice;
 
-    if(choice >= 1 || choice <= 4)
+    if(choice >= 1 && choice <= 4)
     {
         captain = allowed_captains[choice - 1];
     }
