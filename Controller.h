@@ -1,6 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <fstream>
+
 #include "Sign_Up.h"
 #include "Message.h"
 

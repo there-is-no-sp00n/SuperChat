@@ -7,13 +7,33 @@ Controller::Controller()
 
 void Controller::run_the_show()
 {
-    Sign_Up test;
-    test.set_user();
-    test.create_user();
+    ifstream file;
+
+    file.open("File_User.txt");
 
 
-    Message m_test;
+    //checking to see if the file is empty or not AKA is there a user already created?
+    if(file.peek() == std::ifstream::traits_type::eof())
+    {
+        //if file empty go into sign up screen
+        Sign_Up test;
+        test.set_user();
+        test.create_user();
 
-    m_test.set_msg("john", 434343, 1);
+        file.close();
+    }
+
+    else
+    {
+        //log in screen
+
+        file.close();
+    }
+
+
+
+    //Message m_test;
+
+    //m_test.set_msg("john", 434343, 1);
 
 }
