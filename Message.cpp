@@ -7,8 +7,9 @@ Message::Message()
 
 void Message::set_msg(string nick, int id, int prv)
 {
-    //have to check for a bug here as well
-    cout << "Enter Message:";
+
+    cout << "Enter Message: ";
+    cin.ignore();
     getline(cin, msg);
     cout << endl;
 

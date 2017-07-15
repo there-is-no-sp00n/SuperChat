@@ -12,8 +12,8 @@ void Controller::run_the_show()
     test.create_user();
 
 
-    //Message m_test;
+    Message m_test;
 
-    //m_test.set_msg("john", 434343, 1);
+    m_test.set_msg("john", 434343, 1);
 
 }
