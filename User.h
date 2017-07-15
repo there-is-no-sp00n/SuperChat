@@ -15,6 +15,14 @@ class User
     public:
           User();
 
+          User(string name_1, int id_1, int grad_1, string capitan_1)
+          {
+                nick = name_1;
+                UUID = id_1;
+                year = grad_1;
+                captain = capitan_1;
+          }
+
 
           void set_user(string, int, string);
 

@@ -7,6 +7,8 @@ Controller::Controller()
 
 void Controller::run_the_show()
 {
+    User def_user;
+
     ifstream file;
 
     file.open("File_User.txt");
@@ -26,6 +28,15 @@ void Controller::run_the_show()
     else
     {
         //log in screen
+        Log_In log_in_t;
+        log_in_t.set_default_user();
+
+        def_user = log_in_t.get_user();
+
+        cout << def_user.get_nick(def_user) << endl;
+        cout << def_user.get_grad_year(def_user) << endl;
+        cout << def_user.get_captain(def_user) << endl;
+        cout << def_user.get_UUID(def_user) << endl;
 
         file.close();
     }
