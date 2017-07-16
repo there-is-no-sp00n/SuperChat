@@ -11,7 +11,9 @@ void User::set_user(string name, int grad, string ent_capt)
     year = grad;
     captain = ent_capt;
 
-    UUID = rand();
+    srand(time(NULL));
+
+    UUID = rand() % 100+1;
 
 
     cout << nick << endl;

@@ -9,6 +9,8 @@ class Chatroom
     public:
             Chatroom();
 
+            void create_chatroom();
+
             void disp_msg(vector <Message>);
 
             void put_msg_in_vec(Message);
@@ -26,3 +28,5 @@ class Chatroom
 
 
 };
+
+#endif

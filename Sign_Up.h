@@ -13,14 +13,14 @@ class Sign_Up
     public:
             Sign_Up();
 
-            void create_user();
+            void create_user(string, int, int);
 
             void set_user();
 
             void user_to_file(User);
 
     private:
-            string allowed_captains[4] = {"Kirk", "Picard", "Pike", "Other"};
+            string allowed_captains[4] = {"kirk", "picard", "pike", "other"};
             string nick;
             int year;
             string captain;
