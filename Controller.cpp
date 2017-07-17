@@ -4,8 +4,10 @@ Fl_Window *win;
 
 Fl_Button *rp_sign_up;
 Fl_Button *close_main;
+Fl_Button *log_in;
 
 Create_User_Dialog sign_up_screen;
+Log_In log_in_screen;
 
 vector<User> list_da_users, from_other;
 
@@ -156,6 +158,11 @@ void close_main_CB(Fl_Widget *w, void *p)
 	
 }
 
+void log_in_CB(Fl_Widget *w, void *p)
+{
+	log_in_screen.log_s();
+}
+
 
 Controller::Controller()
 {
@@ -180,6 +187,9 @@ int Controller::run_the_show()
 	
 	close_main = new Fl_Button(200, 240, 60, 25, "Close");
 	close_main->callback((Fl_Callback *)close_main_CB,0);
+
+	log_in = new Fl_Button(100, 240, 60, 25, "Log In");
+	log_in->callback((Fl_Callback *)log_in_CB, 0);
     win->end();
     win->show();
 

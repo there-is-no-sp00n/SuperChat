@@ -3,22 +3,44 @@
 
 #include <fstream>
 #include <string>
+#include <string.h>
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Box.H>
+#include <FL/Fl_Input.H>
+#include <FL/Fl_Multiline_Input.H>
+#include <FL/Fl_Widget.H>
+#include <FL/Fl_Browser.H>
+#include <FL/Fl_Output.H>
+#include <FL/Fl_Multiline_Output.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl_Text_Display.H>
+
+
 #include "User.h"
+
+using namespace std;
 
 class Log_In
 {
     public:
-        Log_In();
+        Log_In()
+	{
 
-        void set_default_user();
+	}
 
-        User get_user();
+	void log_s();
+
+        //void set_default_user();
+
+        //User get_user();
 
     private:
 
-        User default_user;
+        //User default_user;
 
-        ifstream from_file;
+        //ifstream from_file;
 
 };
 
