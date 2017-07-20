@@ -70,6 +70,7 @@ void log_in_enter_CB()
 				log_ok = new Fl_Button(175, 150, 30, 25, "OK");
 				log_ok->callback((Fl_Callback*)success_CB,0);
 				success_win->show();
+				success_win->color(FL_RED);
 				log_screen->hide();
 				break;
 			}		
@@ -83,6 +84,7 @@ void log_in_enter_CB()
 		log_ok = new Fl_Button(175, 150, 30, 25, "OK");
 		log_ok->callback((Fl_Callback*)success_CB,0);
 		success_win->show();
+		success_win->color(FL_RED);
 	}
 
 }
@@ -137,6 +139,7 @@ void Log_In::log_s()
 {
 	from_da_file();
 	log_screen = new Fl_Window(500, 500, "Log In");
+	log_screen->color(FL_YELLOW);
 
 	name = new Fl_Input(120, 10, 210, 25, "Nick");
 	

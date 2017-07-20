@@ -71,6 +71,7 @@ void create_userCB(Fl_Widget* w, void* p)
 		error_okay = new Fl_Button(175, 150, 30, 25, "Okay");
 		error_okay->callback((Fl_Callback*)error_okay_button_CB, 0);
 		err_dialog->show();
+		err_dialog->color(FL_RED);
 		flag = 1;
 		create = 0;	
 	}
@@ -87,6 +88,7 @@ void create_userCB(Fl_Widget* w, void* p)
 		error_okay = new Fl_Button(175, 150, 30, 25, "Okay");
 		error_okay->callback((Fl_Callback*)error_okay_button_CB, 0);
 		err_dialog->show();
+		err_dialog->color(FL_RED);
 		create = 0;
 	
 	}
@@ -100,10 +102,11 @@ void create_userCB(Fl_Widget* w, void* p)
 		error_okay = new Fl_Button(175, 150, 30, 25, "Okay");
 		error_okay->callback((Fl_Callback*)error_okay_button_CB, 0);
 		err_dialog->show();
+		err_dialog->color(FL_RED);
 		create = 0;
     	}
 
-	if ((year_num <= 2017 && year_num >= 2040) && !flag)
+	if (!(year_num >= 2017 && year_num <= 2040) && !flag)
 	{
 	        cout << "ERROR! Year of graduation must be between 2017 and 2040" << endl;
 		
@@ -112,6 +115,7 @@ void create_userCB(Fl_Widget* w, void* p)
 		error_okay = new Fl_Button(175, 150, 30, 25, "Okay");
 		error_okay->callback((Fl_Callback*)error_okay_button_CB, 0);
 		err_dialog->show();
+		err_dialog->color(FL_RED);
 		create = 0;	        
 	}
 
@@ -119,7 +123,7 @@ void create_userCB(Fl_Widget* w, void* p)
 	{
 		srand(time(NULL));
 
-    		int UUID = rand() % 100+1;
+    		int UUID = rand();// % 100+1;
 		User init_user(nick, UUID, year_num, allowed_captains[user_cap-1]);
 		create_dial_user.push_back(init_user);
 
@@ -144,6 +148,12 @@ vector <User> Create_User_Dialog::get_users()
 }
 
 
+void Create_User_Dialog::run_print()
+{
+	print_from_vector();
+}
+
+
 
 
 void Create_User_Dialog::sign_them_up()
@@ -151,6 +161,7 @@ void Create_User_Dialog::sign_them_up()
       //create_dial_user = da_users;
     
       dialog = new Fl_Window(500, 500, "New User");
+      dialog->color(FL_DARK_RED);
 
       rp_nickname = new Fl_Input(120, 10, 210, 25, "Nickname:");
       rp_nickname->align(FL_ALIGN_LEFT);

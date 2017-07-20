@@ -5,6 +5,10 @@ Fl_Window *win;
 Fl_Button *rp_sign_up;
 Fl_Button *close_main;
 Fl_Button *log_in;
+Fl_Button *info_super;
+Fl_Button *save_user;
+
+Fl_Box *welcome_box;
 
 Create_User_Dialog sign_up_screen;
 Log_In log_in_screen;
@@ -87,6 +91,7 @@ void from_file()
 
 void handle_close()
 {
+	from_other = sign_up_screen.get_users();
 	list_da_users.reserve(list_da_users.size() + from_other.size());
 	//list_da_users.insert(list_da_users.end(), list_da_users.begin(), list_da_users.end());
 	list_da_users.insert(list_da_users.end(), from_other.begin(), from_other.end());
@@ -110,11 +115,39 @@ void handle_close()
 
 }
 
+void info_super_CB(Fl_Widget *w, void *p)
+{
+	fl_message("SuperChat is a free messaging service\nThis service was provided by:\nNatnael\nAninda\nOctavio\nCarlos");
+}
+
+void interval_update()
+{	
+	from_other = sign_up_screen.get_users();
+	int vec_siz = from_other.size();
+
+	cout << "interval update vector size: " << vec_siz << endl;
+
+	cout << "interval_update CB" << endl;
+
+	for(int i = 0; i < vec_siz; i++)
+	{
+		User temp = from_other[i];
+		
+		cout << temp.get_UUID(temp) << endl;
+		cout << temp.get_nick(temp) << endl;
+		cout << temp.get_grad_year(temp) << endl;
+		cout << temp.get_captain(temp) << endl;
+	}
+	handle_close();
+}
 
 void sign_up_CB(Fl_Widget *w, void *p)
 {
-	//cout << "sign up callback" << endl;
 	sign_up_screen.sign_them_up();
+
+	cout << "sign up callback" << endl;
+
+	sign_up_screen.run_print();
 
 	from_other = sign_up_screen.get_users();
 
@@ -131,6 +164,7 @@ void sign_up_CB(Fl_Widget *w, void *p)
 		cout << temp.get_captain(temp) << endl;
 	}
 	from_other = sign_up_screen.get_users();
+	//interval_update();
 
 }
 
@@ -152,10 +186,31 @@ void close_main_CB(Fl_Widget *w, void *p)
 		cout << temp.get_grad_year(temp) << endl;
 		cout << temp.get_captain(temp) << endl;
 	}
-	handle_close();
+	//handle_close();
 	//to_file(list_da_users);
 	win->hide();
 	
+}
+
+void save_CB(Fl_Widget *w, void *p)
+{
+	from_other = sign_up_screen.get_users();
+	int vec_siz = from_other.size();
+
+	cout << "save CB vector size: " << vec_siz << endl;
+
+	cout << "save CB" << endl;
+
+	for(int i = 0; i < vec_siz; i++)
+	{
+		User temp = from_other[i];
+		
+		cout << temp.get_UUID(temp) << endl;
+		cout << temp.get_nick(temp) << endl;
+		cout << temp.get_grad_year(temp) << endl;
+		cout << temp.get_captain(temp) << endl;
+	}
+	handle_close();
 }
 
 void log_in_CB(Fl_Widget *w, void *p)
@@ -175,21 +230,31 @@ int Controller::run_the_show()
     
 
 
-    const int X = 400;
-    const int Y = 400;
+    const int X = 900;
+    const int Y = 500;
 
     win = new Fl_Window(X, Y, "SuperChat");
+	win->color(FL_DARK_CYAN);
+
+	welcome_box = new Fl_Box(300, 40, 260, 100, "Welcome to SuperChat!!");
 
 
 
-	rp_sign_up = new Fl_Button(270, 240, 60, 25, "Sign Up");
+	rp_sign_up = new Fl_Button(310, 200, 140, 50, "Sign Up");
 	rp_sign_up->callback((Fl_Callback *)sign_up_CB, 0);
 	
-	close_main = new Fl_Button(200, 240, 60, 25, "Close");
+	close_main = new Fl_Button(450, 200, 140, 50, "Exit");
 	close_main->callback((Fl_Callback *)close_main_CB,0);
 
-	log_in = new Fl_Button(100, 240, 60, 25, "Log In");
+	log_in = new Fl_Button(450, 250, 140, 50, "Log In");
 	log_in->callback((Fl_Callback *)log_in_CB, 0);
+
+	save_user = new Fl_Button(450, 300, 140, 50, "Save Nick");
+	save_user->callback((Fl_Callback *)save_CB, 0);
+
+	info_super = new Fl_Button(310, 250, 140, 50, "Info");
+	info_super->callback((Fl_Callback *)info_super_CB,0);
+
     win->end();
     win->show();
 

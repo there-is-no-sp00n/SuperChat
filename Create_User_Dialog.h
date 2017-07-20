@@ -26,6 +26,8 @@ class Create_User_Dialog
 		void sign_them_up();
 
 		vector<User> get_users();
+		
+		void run_print();
 
 
 
