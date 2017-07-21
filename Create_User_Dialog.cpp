@@ -93,7 +93,7 @@ void create_userCB(Fl_Widget* w, void* p)
 	
 	}
 
-	if(nick.find_first_of("1234567890!@#$%^&*.?;:,+'/}{]" "[><~` ") != string::npos)
+	else if(nick.find_first_of("1234567890!@#$%^&*.?;:,+'/}{]" "[><~` ") != string::npos)
         {
         	cout << "ERROR! Only Upper & Lower case letters allowed and '-' or '_'" << endl;
 
@@ -106,7 +106,7 @@ void create_userCB(Fl_Widget* w, void* p)
 		create = 0;
     	}
 
-	if (!(year_num >= 2017 && year_num <= 2040) && !flag)
+	else if (!(year_num >= 2017 && year_num <= 2040) && !flag)
 	{
 	        cout << "ERROR! Year of graduation must be between 2017 and 2040" << endl;
 		

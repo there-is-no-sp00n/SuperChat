@@ -19,6 +19,7 @@
 #include "Sign_Up.h"
 #include "Log_In.h"
 #include "Message.h"
+#include "View_Chatroom_Window.h"
 
 #include "Create_User_Dialog.h"
 

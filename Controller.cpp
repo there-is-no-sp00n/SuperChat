@@ -7,13 +7,17 @@ Fl_Button *close_main;
 Fl_Button *log_in;
 Fl_Button *info_super;
 Fl_Button *save_user;
+Fl_Button *da_rooms;
 
 Fl_Box *welcome_box;
 
 Create_User_Dialog sign_up_screen;
 Log_In log_in_screen;
+View_Chatroom_Window them_chatrooms;
 
 vector<User> list_da_users, from_other;
+
+string main_user;
 
 void to_file(vector<User> user_l)
 {
@@ -192,6 +196,21 @@ void close_main_CB(Fl_Widget *w, void *p)
 	
 }
 
+void da_rooms_CB(Fl_Widget *w, void *p)
+{
+	cout << "view rooms CB" << endl;
+	main_user = log_in_screen.get_logged_in_user();
+	if(!(main_user.empty()))
+	{
+		cout << "The main user is: " << main_user << endl;
+		them_chatrooms.show_the_rooms();
+	}
+	else
+	{
+		fl_message("Please log in to see chatrooms.");
+	}
+}
+
 void save_CB(Fl_Widget *w, void *p)
 {
 	from_other = sign_up_screen.get_users();
@@ -214,8 +233,9 @@ void save_CB(Fl_Widget *w, void *p)
 }
 
 void log_in_CB(Fl_Widget *w, void *p)
-{
+{	
 	log_in_screen.log_s();
+	cout << "log_in_CB" << endl;
 }
 
 
@@ -254,6 +274,9 @@ int Controller::run_the_show()
 
 	info_super = new Fl_Button(310, 250, 140, 50, "Info");
 	info_super->callback((Fl_Callback *)info_super_CB,0);
+
+	da_rooms = new Fl_Button(310, 300, 140, 50, "View Rooms");
+	da_rooms->callback((Fl_Callback *)da_rooms_CB, 0);
 
     win->end();
     win->show();

@@ -12,6 +12,9 @@ Fl_Scrollbar *cap_scroll;
 Fl_Button *log_in_enter;
 Fl_Button *log_ok;
 
+
+string logged_in_user;
+
 int user_capi;
 string allowed_captain[4] = {"kirk", "picard", "pike", "other"};
 
@@ -71,6 +74,7 @@ void log_in_enter_CB()
 				log_ok->callback((Fl_Callback*)success_CB,0);
 				success_win->show();
 				success_win->color(FL_RED);
+				logged_in_user = nick_1;
 				log_screen->hide();
 				break;
 			}		
@@ -158,4 +162,9 @@ void Log_In::log_s()
 	log_screen->set_non_modal();
 	log_screen->show();
 
+}
+
+string Log_In::get_logged_in_user()
+{
+	return logged_in_user;
 }

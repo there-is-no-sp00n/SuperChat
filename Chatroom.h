@@ -4,6 +4,8 @@
 #include "Message.h"
 #include "User.h"
 
+using namespace std;
+
 class Chatroom
 {
     public:

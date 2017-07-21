@@ -32,6 +32,8 @@ class Log_In
 
 	void log_s();
 
+	string get_logged_in_user();
+
         //void set_default_user();
 
         //User get_user();
