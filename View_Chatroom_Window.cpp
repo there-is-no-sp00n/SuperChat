@@ -3,12 +3,22 @@
 Fl_Window* chatroom_win;
 Fl_Menu_Bar* menubar;
 
+vector<string> names_of_rooms;//.push_back("Public");
+
+string temp = ("Public");
+
+Chatroom new_chat;
+
+
+//names_of_rooms.push_back(temp);
+
 const int fixedWidth = 60;
 const int defaultHeight = 30;
 int num_of_chatrooms = 1;
+
 void NewCB(Fl_Widget* w, void* p)
 {
-
+	new_chat.run_chatroom();
 }
 
 void delete_chatroomCB(Fl_Widget* w, void* p)
@@ -48,6 +58,7 @@ Fl_Menu_Item menuitems[] = {
 };
 
 
+
 // Combo widget to appear in the scroll, two boxes: one fixed, the other stretches
 class ScrollItem : public Fl_Group {
     Fl_Box *privacyBox;
@@ -56,10 +67,10 @@ public:
     ScrollItem(int X, int Y, int W, int H, const char* L=0) : Fl_Group(X,Y,W,H,L) {
         begin();
             // Fixed width box
-            privacyBox = new Fl_Box(X,Y,fixedWidth,defaultHeight,"Privacy");
+            privacyBox = new Fl_Box(X,Y,fixedWidth,defaultHeight,"Public");
             privacyBox->box(FL_UP_BOX);
             // Stretchy box
-            chatroomButton = new Fl_Button(X+fixedWidth,Y,W-fixedWidth,defaultHeight, "Chatroom");
+            chatroomButton = new Fl_Button(X+fixedWidth,Y,W-fixedWidth,defaultHeight, "Public");
             //stretchBox->box(FL_UP_BOX);
             resizable(chatroomButton);
         end();
@@ -109,20 +120,22 @@ void add_cb(Fl_Widget*, void *data)
 	}
 }
 
+
+
 void View_Chatroom_Window::show_the_rooms()
 {
 	
 	Fl_Double_Window *chatroom_win = new Fl_Double_Window(500,300, "Chatrooms");
    	 //win->color(FL_WHITE);
    	 MyScroll *scroll = new MyScroll(10,50,chatroom_win->w()-20,chatroom_win->h()-100);
-   	 //scroll->box(FL_BORDER_BOX);
+   	 scroll->box(FL_BORDER_BOX);
    	 scroll->end();
    	 menubar = new Fl_Menu_Bar(0, 0, 500, 30);
    	 menubar->menu(menuitems);
 	
    	 Fl_Button *add_butt = new Fl_Button(chatroom_win->w()-150, chatroom_win->h()-40, 100, 25, "Add");
    	 add_butt->callback(add_cb, (void*)scroll);
-   	 // Create a few widgets to start with
+   	  //Create a few widgets to start with
    	 for ( int t=0; t<1; t++ )
 	{
 		scroll->AddItem();

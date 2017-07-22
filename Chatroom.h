@@ -4,6 +4,18 @@
 #include "Message.h"
 #include "User.h"
 
+#include <FL/Fl.H>
+#include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Group.H>
+#include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Scroll.H>
+#include <FL/Fl_Button.H>
+#include <FL/Fl_Box.H>
+#include <FL/Fl_Multiline_Input.H>
+#include <FL/Fl_Multiline_Output.H>
+
+#include <vector>
+
 using namespace std;
 
 class Chatroom
@@ -11,7 +23,7 @@ class Chatroom
     public:
             Chatroom();
 
-            void create_chatroom();
+            void run_chatroom();
 
             void disp_msg(vector <Message>);
 

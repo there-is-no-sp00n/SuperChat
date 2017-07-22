@@ -9,6 +9,11 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 
+#include "Chatroom.h"
+#include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
 
 class View_Chatroom_Window
