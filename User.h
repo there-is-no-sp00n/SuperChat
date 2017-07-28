@@ -37,6 +37,8 @@ class User
 
           string get_nick(User);
 
+	  void set_nick(string);
+
           int get_UUID(User);
 
           int get_grad_year(User);

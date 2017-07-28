@@ -12,6 +12,15 @@ Fl_Scrollbar *cap_scroll;
 Fl_Button *log_in_enter;
 Fl_Button *log_ok;
 
+Fl_Button *change_nick;
+Fl_Window *change_nick_win;
+Fl_Input *change_nick_input;
+Fl_Input *change_nick_input_1;
+Fl_Button *enter_change_nick;
+
+string nick_to_be_changed;
+string da_new_nick;
+
 
 string logged_in_user;
 
@@ -19,6 +28,111 @@ int user_capi;
 string allowed_captain[4] = {"kirk", "picard", "pike", "other"};
 
 vector<User> log_vec;
+
+
+void to_da_file(vector<User> user_l)
+{
+	ofstream user_file;
+	user_file.open("File_User.txt");
+    	user_file << "UUID"  << " " << setw(25) << "Nick" << " " << setw(20) << "Year" << " " << setw(20) << "Captain" << endl;
+    	user_file << endl;
+	int use_s = user_l.size();
+
+	cout << "print vector size" << use_s << endl;
+
+	for(int i = 0; i < use_s; i++)
+	{
+		cout << "i = " << i << endl;
+		User temp;
+
+		//int UUID, year;
+		//string name, captain;
+
+		temp = user_l[i];
+		//UUID = temp.get_UUID(temp)
+
+		user_file << temp.get_UUID(temp) << " " << setw(20) << temp.get_nick(temp) << " " << setw(20) << temp.get_grad_year(temp) << " " << setw(20) << temp.get_captain(temp) << endl;
+
+	}
+	user_file.close();
+    		
+}
+
+
+
+void ok_change_name_CB(Fl_Widget *w, void *p)
+{
+
+	User temp;
+
+	int flag = 1;
+
+
+	string old_nick = change_nick_input->value();
+	string new_nick = change_nick_input_1->value();
+	
+	cout << "new nick2 " << new_nick << endl;
+		cout << "old nick2 " << old_nick << endl;
+	
+	int vec_s = log_vec.size();
+	
+	cout << "log vec size = " << vec_s << endl;
+
+	//cout << temp.get_nick(temp).compare(nick) << endl;
+
+	for(int i = 0; i < vec_s; i++)
+	{
+		temp = log_vec[i];	
+		cout << "new nick " << new_nick << endl;
+		cout << "old nick " << old_nick << endl;
+		string nick_1 = temp.get_nick(temp);
+		cout << "vec_nick " << nick_1 << endl;
+		if(old_nick == nick_1)
+		{
+			flag = 0;
+			log_vec[i].set_nick(new_nick);
+			change_nick_win->hide();
+			to_da_file(log_vec);
+			break;
+		}
+		
+		
+	}
+
+	if(flag == 1)
+	{
+		fl_message("The nick does not exist");
+	}
+
+	for(int i = 0; i < vec_s; i++)
+	{
+		User temp = log_vec[i];
+		
+		cout << temp.get_UUID(temp) << endl;
+		cout << temp.get_nick(temp) << endl;
+		cout << temp.get_grad_year(temp) << endl;
+		cout << temp.get_captain(temp) << endl;
+	}
+
+
+}
+
+void change_nick_CB(Fl_Widget *w, void *p)
+{
+	log_screen->hide();
+	cout << "rename nick" << endl;
+	change_nick_win = new Fl_Window(500, 500, "Change Log-In");
+
+	change_nick_input = new Fl_Input(150, 50, 100, 100, "Old Nick");
+	change_nick_input_1 = new Fl_Input(150, 175, 100, 100, "New Nick");
+
+	enter_change_nick = new Fl_Button(300,300, 50, 50, "OK");
+	enter_change_nick->callback((Fl_Callback*)ok_change_name_CB, 0);
+	
+	change_nick_win->resizable(change_nick_win);
+	change_nick_win->show();
+	
+}
 
 void success_CB(Fl_Widget *w, void *p)
 {
@@ -157,6 +271,9 @@ void Log_In::log_s()
 
 	log_in_enter = new Fl_Button(200, 200, 50, 50, "Enter");
 	log_in_enter->callback((Fl_Callback*)log_in_enter_CB, 0);
+
+	change_nick = new Fl_Button(300,300, 50, 50, "Change");
+	change_nick->callback((Fl_Callback*)change_nick_CB, 0);
 
 	log_screen->end();
 	log_screen->set_non_modal();

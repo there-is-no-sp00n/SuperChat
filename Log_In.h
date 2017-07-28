@@ -2,6 +2,8 @@
 #define LOG_IN_H
 
 #include <fstream>
+#include <iostream>
+#include <iomanip>
 #include <string>
 #include <string.h>
 #include <FL/Fl.H>
@@ -16,6 +18,7 @@
 #include <FL/Fl_Multiline_Output.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Text_Display.H>
+#include <FL/fl_ask.H>
 
 
 #include "User.h"

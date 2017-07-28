@@ -50,3 +50,8 @@ vector <User> User::get_ban(User da_user)
 {
     return ban_list;
 }
+
+void User::set_nick(string name)
+{
+	nick = name;
+}

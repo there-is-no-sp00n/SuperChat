@@ -42,6 +42,9 @@ void chat_butt_CB(Fl_Widget *w, void *p)
 	
 	cout << "chosen room is " << temp << endl;
 
+	//SuperChat_Access obj;
+	//obj.Chat_Window(temp);
+
 	new_chat.run_chatroom(temp);
 }
 
