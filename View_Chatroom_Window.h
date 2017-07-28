@@ -7,7 +7,10 @@
 #include <FL/Fl_Menu_Bar.H>
 #include <FL/Fl_Scroll.H>
 #include <FL/Fl_Button.H>
+#include <FL/Fl_Browser.H>
 #include <FL/Fl_Box.H>
+#include <FL/Fl_Input_Choice.H>
+#include <FL/fl_ask.H>
 
 #include "Chatroom.h"
 #include <iostream>
@@ -25,6 +28,11 @@ class View_Chatroom_Window
 		}
 
 		void show_the_rooms();
+
+		void update_the_vec(string);
+		
+		vector<string> pub_vec;
+		//pub_vec.push_back("Public");
 
 	private:
 

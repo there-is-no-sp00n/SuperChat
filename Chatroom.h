@@ -10,6 +10,7 @@
 #include <FL/Fl_Menu_Bar.H>
 #include <FL/Fl_Scroll.H>
 #include <FL/Fl_Button.H>
+#include <FL/Fl_Return_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Multiline_Input.H>
 #include <FL/Fl_Multiline_Output.H>
@@ -23,7 +24,7 @@ class Chatroom
     public:
             Chatroom();
 
-            void run_chatroom();
+            void run_chatroom(string);//char [25]);
 
             void disp_msg(vector <Message>);
 

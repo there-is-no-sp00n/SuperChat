@@ -4,7 +4,7 @@
 Fl_Window *chat_window;
 Fl_Multiline_Input *send_da_chat;
 Fl_Multiline_Output *receive_da_chat;
-Fl_Button *send_msg;
+Fl_Return_Button *send_msg;
 
 vector<string> tot_msgs;
 
@@ -36,10 +36,17 @@ void send_msg_CB(Fl_Widget *w, void *p)
 
 	while(counter < msg_num)
 	{
-		whole_msg = whole_msg + "\n" + tot_msgs[counter];
-		counter++;
+		//if((whole_msg.empty()))
+		//{
+			whole_msg = whole_msg + "\n" + tot_msgs[counter];
+			counter++;
+			cout << "total msgs is " << whole_msg << endl;
+		//}
 
-		cout << "total msgs is " << whole_msg << endl;
+		//else
+		//{
+			cout << "total msgs is empty " << whole_msg << endl;
+		//}
 	}
 
 	strncpy(out, whole_msg.c_str(), sizeof(whole_msg));
@@ -56,13 +63,16 @@ Chatroom::Chatroom()
 
 }
 
-void Chatroom::run_chatroom()
+void Chatroom::run_chatroom(string name)//char[25] nombre)
 {
-	chat_window = new Fl_Window(1000, 1000, "Public");
+	char chat_nombre[25];
+
+	strncpy(chat_nombre, name.c_str(), sizeof(name));
+	chat_window = new Fl_Window(1000, 1000, chat_nombre);//nombre);
 	send_da_chat = new Fl_Multiline_Input(50, 450, 900, 400);
 	receive_da_chat = new Fl_Multiline_Output(50, 20, 900, 400);
 
-	send_msg = new Fl_Button(800, 850, 100, 100, "Send");
+	send_msg = new Fl_Return_Button(800, 850, 100, 100, "Send");
 	send_msg->callback((Fl_Callback *)send_msg_CB, 0);
 	chat_window->show();
 }

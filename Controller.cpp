@@ -253,8 +253,9 @@ int Controller::run_the_show()
     const int X = 900;
     const int Y = 500;
 
-    win = new Fl_Window(X, Y, "SuperChat");
+        win = new Fl_Window(X, Y, "SuperChat");
 	win->color(FL_DARK_CYAN);
+	win->resizable(win);
 
 	welcome_box = new Fl_Box(300, 40, 260, 100, "Welcome to SuperChat!!");
 
