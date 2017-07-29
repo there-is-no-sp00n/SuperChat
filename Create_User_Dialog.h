@@ -17,13 +17,14 @@
 #include <string.h>
 
 #include "Sign_Up.h"
+#include "User.h"
 
 using namespace std;
 
 class Create_User_Dialog
 {
 	public:
-		void sign_them_up();
+		void sign_them_up(vector<User>);
 
 		vector<User> get_users();
 		

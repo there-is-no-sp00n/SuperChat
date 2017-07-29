@@ -16,6 +16,8 @@ string allowed_captains[4] = {"kirk", "picard", "pike", "other"};
 
 vector<User> create_dial_user;
 
+vector<User> check_vec;
+
 void error_okay_button_CB()
 {
 	err_dialog->hide();
@@ -52,6 +54,19 @@ void print_from_vector()
 		cout << temp.get_captain(temp) << endl;
 	}
 
+	cout << "from controller " << endl;
+	int siz = check_vec.size();
+	
+	for(int i = 0; i < siz; i++)
+	{
+		User temp = check_vec[i];
+		
+		cout << temp.get_UUID(temp) << endl;
+		cout << temp.get_nick(temp) << endl;
+		cout << temp.get_grad_year(temp) << endl;
+		cout << temp.get_captain(temp) << endl;
+	}
+
 }
 
 void create_userCB(Fl_Widget* w, void* p)
@@ -63,6 +78,25 @@ void create_userCB(Fl_Widget* w, void* p)
 
 	nick = rp_nickname->value();
 	year = rp_year->value();
+
+	int siz = check_vec.size();
+	
+	for(int i = 0; i < siz; i++)
+	{
+		User temp = check_vec[i];
+		
+		cout << temp.get_UUID(temp) << endl;
+		cout << temp.get_nick(temp) << endl;
+		cout << temp.get_grad_year(temp) << endl;
+		cout << temp.get_captain(temp) << endl;
+
+		if(temp.get_nick(temp) == nick)
+		{
+			fl_message("The nick already exists");
+		}
+	}
+
+	
 
 	if(year.find_first_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*.?;:,+'/}{]" "[><~` ") != string::npos)
 	{
@@ -156,9 +190,10 @@ void Create_User_Dialog::run_print()
 
 
 
-void Create_User_Dialog::sign_them_up()
+void Create_User_Dialog::sign_them_up(vector<User> da_users)
 {
-      //create_dial_user = da_users;
+      check_vec = da_users;
+	
     
       dialog = new Fl_Window(500, 500, "New User");
       dialog->color(FL_DARK_RED);

@@ -147,7 +147,7 @@ void interval_update()
 
 void sign_up_CB(Fl_Widget *w, void *p)
 {
-	sign_up_screen.sign_them_up();
+	sign_up_screen.sign_them_up(list_da_users);
 
 	cout << "sign up callback" << endl;
 
